@@ -12,14 +12,12 @@ export default function Chat({ user, users }) {
   const getUserChatRef = (user) => {
     if(user) setUserChatRef(db.collection('chats').where('users', 'array-contains', user.email));
   };
+
+  // console.log("users :", users);
   
   const [chatsSnapshot, loading, error] = useCollection(userChatRef);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const owner = "david.chmarzynski@gmail.com";
-
-  const signIn = () => {
-    auth.signInWithPopup(provider).catch(alert)
-  };
 
   const signOut = () => {
     auth.signOut();
@@ -75,9 +73,6 @@ export default function Chat({ user, users }) {
 
   return (
     <div className="chat">
-      {!user && (
-        <Login signIn={signIn} />
-      )}
       {user && (
         <button onClick={signOut}>Se Déconnecter</button>
       )}

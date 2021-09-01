@@ -18,7 +18,7 @@ export default function Messages({ users, user }) {
   // const recipientEmail = getRecipientEmail(users, user);
   useEffect(() => {
     if(users.length > 0) setRecipientEmail(getRecipientEmail(users, user.email));
-    console.log(recipientEmail)
+    // console.log(recipientEmail)
   });
 
   return (

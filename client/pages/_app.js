@@ -14,11 +14,6 @@ function MyApp({ Component, pageProps }) {
     if(user) setUserChatRef(db.collection('chats').where('users', 'array-contains', user.email));
   };
 
-  let ref = db.collection('users').doc("displayName");
-  ref.get().then((doc) => {
-    console.log(doc.data())
-  })
-
   useEffect(() => {
     if(user) {
       db.collection("users").doc(user.uid).set({
