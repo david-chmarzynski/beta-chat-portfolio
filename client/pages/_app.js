@@ -18,6 +18,8 @@ function MyApp({ Component, pageProps }) {
     if(user) {
       db.collection("users").doc(user.uid).set({
         email: user.email,
+        id: user.uid,
+        username: user.displayName,
         lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
         photoURL: user.photoURL,
         isOnline: true
